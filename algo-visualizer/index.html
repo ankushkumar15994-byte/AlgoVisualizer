@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlgoVisualizer — Interactive Algorithm Learning</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <main class="home-page">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-bg"><canvas id="heroBg"></canvas></div>
+      <div class="hero-content">
+        <div class="hero-badge">✦ Interactive Learning Platform</div>
+        <h1>Visualize Algorithms<br>in Real Time</h1>
+        <p class="hero-sub">Watch sorting, graph traversal, and optimization algorithms come to life with animated step-by-step visualizations and live statistics.</p>
+        <div class="hero-actions">
+          <a href="sorting.html" class="btn btn-primary">Start Exploring →</a>
+          <a href="#algorithms" class="btn">Browse Algorithms</a>
+        </div>
+      </div>
+      <div class="hero-scroll">
+        <span>Scroll</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+      <div class="stats-bar-item"><span class="num">11</span><div class="lbl">Algorithms</div></div>
+      <div class="stats-bar-item"><span class="num">4</span><div class="lbl">Categories</div></div>
+      <div class="stats-bar-item"><span class="num">∞</span><div class="lbl">Visualizations</div></div>
+      <div class="stats-bar-item"><span class="num">100%</span><div class="lbl">Free & Open</div></div>
+    </div>
+
+    <!-- Algorithm Cards -->
+    <section class="section" id="algorithms">
+      <div class="section-header">
+        <h2>Explore Algorithms</h2>
+        <p>Pick a category and watch algorithms execute step by step with real-time stats.</p>
+      </div>
+      <div class="algo-cards">
+
+        <div class="algo-card">
+          <div class="card-icon">🔀</div>
+          <h3>Sorting Algorithms</h3>
+          <p>Watch how different sorting strategies compare, swap, and arrange elements with animated bar charts.</p>
+          <div class="algo-tags">
+            <span class="tag">Bubble Sort</span>
+            <span class="tag">Selection Sort</span>
+            <span class="tag">Merge Sort</span>
+            <span class="tag">Quick Sort</span>
+          </div>
+          <a href="sorting.html" class="btn btn-primary btn-full">Open Visualizer →</a>
+        </div>
+
+        <div class="algo-card">
+          <div class="card-icon">🕸️</div>
+          <h3>Graph Algorithms</h3>
+          <p>Explore traversal and shortest-path algorithms on interactive node-edge graphs you can customize.</p>
+          <div class="algo-tags">
+            <span class="tag">BFS</span>
+            <span class="tag">DFS</span>
+            <span class="tag">Dijkstra</span>
+            <span class="tag">Prim's MST</span>
+          </div>
+          <a href="graph.html" class="btn btn-primary btn-full">Open Visualizer →</a>
+        </div>
+
+        <div class="algo-card">
+          <div class="card-icon">🗺️</div>
+          <h3>Traveling Salesman</h3>
+          <p>Solve the classic TSP with multiple approaches and compare their efficiency and route quality.</p>
+          <div class="algo-tags">
+            <span class="tag">Brute Force</span>
+            <span class="tag">Dynamic Programming</span>
+            <span class="tag">Greedy</span>
+          </div>
+          <a href="tsp.html" class="btn btn-primary btn-full">Open Visualizer →</a>
+        </div>
+
+        <div class="algo-card">
+          <div class="card-icon">🎯</div>
+          <h3>Classic Problems</h3>
+          <p>Tackle well-known algorithmic challenges using backtracking, dynamic programming, and greedy methods.</p>
+          <div class="algo-tags">
+            <span class="tag">N-Queens</span>
+            <span class="tag">Knapsack</span>
+            <span class="tag">Coin Change</span>
+            <span class="tag">Graph Coloring</span>
+          </div>
+          <a href="problems.html" class="btn btn-primary btn-full">Open Visualizer →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" style="padding-top:0">
+      <div class="section-header">
+        <h2>Built for Learning</h2>
+        <p>Every feature is designed to make algorithm concepts click faster.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-item">
+          <span class="feature-icon">⚡</span>
+          <h4>Speed Control</h4>
+          <p>Slow down or speed up any visualization to match your learning pace.</p>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">📊</span>
+          <h4>Live Statistics</h4>
+          <p>Track comparisons, swaps, nodes visited, and elapsed time in real time.</p>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">⏸️</span>
+          <h4>Pause & Resume</h4>
+          <p>Pause at any step to inspect the current state before continuing.</p>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🌙</span>
+          <h4>Dark / Light Theme</h4>
+          <p>Switch between dark and light modes — your preference is saved automatically.</p>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">📱</span>
+          <h4>Responsive Design</h4>
+          <p>Works great on desktop, tablet, and mobile screens.</p>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🧠</span>
+          <h4>Complexity Info</h4>
+          <p>See time and space complexity for every algorithm at a glance.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h2>Ready to learn by doing?</h2>
+      <p>Pick any algorithm and start visualizing — no setup required.</p>
+      <div class="cta-btns">
+        <a href="sorting.html" class="btn btn-primary">Sorting Algorithms</a>
+        <a href="graph.html" class="btn btn-primary">Graph Algorithms</a>
+        <a href="tsp.html" class="btn">TSP Solver</a>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="assets/js/utils/helpers.js"></script>
+  <script src="assets/js/utils/constants.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/home.js"></script>
+</body>
+</html>

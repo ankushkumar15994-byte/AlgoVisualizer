@@ -1,0 +1,8 @@
+{
+    "sorting": [
+        {"algorithm": "Bubble Sort", "values": [64, 34, 25, 12, 22, 11, 90, 88]},
+        {"algorithm": "Selection Sort", "values": [45, 23, 18, 92, 7, 56, 34, 12]},
+        {"algorithm": "Merge Sort", "values": [38, 27, 43, 3, 9, 82, 10, 36]},
+        {"algorithm": "Quick Sort", "values": [72, 21, 11, 8, 51, 33, 65, 70]}
+    ]
+}

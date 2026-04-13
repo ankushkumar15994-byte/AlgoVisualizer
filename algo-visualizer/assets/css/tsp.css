@@ -1,0 +1,22 @@
+/* ===== TSP Page ===== */
+
+#tspCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.tsp-legend { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+.tsp-legend .legend-item { display: flex; align-items: center; gap: 0.3rem; font-size: 0.72rem; color: var(--text-muted); }
+
+.legend-line { width: 16px; height: 3px; border-radius: 2px; flex-shrink: 0; }
+.legend-line.current { background: var(--warning); }
+.legend-line.best    { background: var(--success); }
+.legend-line.edge    { background: var(--border-light); }
+
+@media (max-width: 600px) {
+  .tsp-legend { gap: 0.4rem; }
+  .tsp-legend .legend-item { font-size: 0.65rem; }
+}

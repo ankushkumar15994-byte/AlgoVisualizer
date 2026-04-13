@@ -1,0 +1,29 @@
+{
+    "name": "algo-visualizer",
+    "version": "1.0.0",
+    "description": "Interactive Algorithm Visualizer for Data Structures & Algorithms (DAA)",
+    "main": "index.html",
+    "scripts": {
+        "start": "python -m http.server 8000",
+        "dev": "python -m http.server 8000",
+        "build": "echo 'No build step required for this project'"
+    },
+    "keywords": [
+        "algorithm",
+        "visualization",
+        "sorting",
+        "graph",
+        "tsp",
+        "daa",
+        "educational"
+    ],
+    "author": "",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "engines": {
+        "node": ">=12.0.0"
+    }
+}

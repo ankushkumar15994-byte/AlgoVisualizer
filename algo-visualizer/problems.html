@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classic Problems — AlgoVisualizer</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/problems.css">
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <main class="problems-page">
+    <div class="problems-header">
+      <h1>Classic DAA Problems</h1>
+      <p>Interactive visualizations of backtracking, dynamic programming, greedy, and divide &amp; conquer algorithms.</p>
+    </div>
+
+    <!-- Tab Nav -->
+    <div class="prob-tabs" id="probTabs">
+      <button class="prob-tab active" data-tab="nqueens">👑 N-Queens</button>
+      <button class="prob-tab" data-tab="knapsack">🎒 Knapsack</button>
+      <button class="prob-tab" data-tab="coinchange">💰 Coin Change</button>
+      <button class="prob-tab" data-tab="fibonacci">🌀 Fibonacci DP</button>
+      <button class="prob-tab" data-tab="activity">📅 Activity Selection</button>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════ N-QUEENS -->
+    <div class="prob-panel active" id="tab-nqueens">
+      <div class="prob-layout">
+        <aside class="prob-sidebar">
+          <div class="sidebar-section">
+            <h4>N-Queens Problem</h4>
+            <div class="info-panel">
+              <div class="complexity-row"><span class="complexity-label">Paradigm</span><span class="complexity-value" style="color:var(--secondary)">Backtracking</span></div>
+              <div class="complexity-row"><span class="complexity-label">Time</span><span class="complexity-value">O(N!)</span></div>
+              <div class="complexity-row"><span class="complexity-label">Space</span><span class="complexity-value">O(N)</span></div>
+              <p class="algo-desc">Place N queens on an N×N board so no two queens share a row, column, or diagonal. Uses backtracking to explore all valid placements.</p>
+            </div>
+          </div>
+          <div class="sidebar-section">
+            <h4>Controls</h4>
+            <div class="control-row">
+              <label>Board Size (N) <span id="nq-n-display">6</span></label>
+              <input type="range" id="nq-n" min="4" max="10" value="6">
+            </div>
+            <div class="control-row">
+              <label>Speed <span id="nq-speed-display">60</span></label>
+              <input type="range" id="nq-speed" min="1" max="100" value="60">
+            </div>
+            <div class="btn-group">
+              <button id="nq-start" class="btn btn-primary btn-full">▶ Solve</button>
+              <button id="nq-reset" class="btn btn-full">↺ Reset</button>
+            </div>
+          </div>
+          <div class="sidebar-section">
+            <h4>Statistics</h4>
+            <div class="stats-grid">
+              <div class="stat-item"><span class="stat-value" id="nq-steps">0</span><span class="stat-label">Steps</span></div>
+              <div class="stat-item"><span class="stat-value" id="nq-solutions">0</span><span class="stat-label">Solutions</span></div>
+              <div class="stat-item"><span class="stat-value" id="nq-backtracks">0</span><span class="stat-label">Backtracks</span></div>
+              <div class="stat-item"><span class="stat-value" id="nq-time">0</span><span class="stat-label">ms</span></div>
+            </div>
+          </div>
+        </aside>
+        <div class="prob-viz">
+          <div class="prob-toolbar">
+            <span class="algo-name">N-Queens Backtracking</span>
+            <div class="nq-legend">
+              <span class="nq-leg queen">♛ Queen</span>
+              <span class="nq-leg conflict">✗ Conflict</span>
+              <span class="nq-leg safe">✓ Safe</span>
+            </div>
+            <div class="status-badge idle" id="nq-status"><div class="status-dot"></div><span id="nq-status-text">Idle</span></div>
+          </div>
+          <div class="prob-canvas-wrap" id="nq-wrap">
+            <div id="nq-board"></div>
+          </div>
+          <div class="step-desc" id="nq-desc">Press ▶ Solve to start backtracking</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════ KNAPSACK -->
+    <div class="prob-panel" id="tab-knapsack">
+      <div class="prob-layout">
+        <aside class="prob-sidebar">
+          <div class="sidebar-section">
+            <h4>0/1 Knapsack</h4>
+            <div class="info-panel">
+              <div class="complexity-row"><span class="complexity-label">Paradigm</span><span class="complexity-value" style="color:var(--secondary)">Dynamic Programming</span></div>
+              <div class="complexity-row"><span class="complexity-label">Time</span><span class="complexity-value">O(N×W)</span></div>
+              <div class="complexity-row"><span class="complexity-label">Space</span><span class="complexity-value">O(N×W)</span></div>
+              <p class="algo-desc">Fill a knapsack of limited capacity with items to maximize total value. DP table is built cell by cell and the optimal selection is traced back.</p>
+            </div>
+          </div>
+          <div class="sidebar-section">
+            <h4>Controls</h4>
+            <div class="control-row">
+              <label>Capacity <span id="ks-cap-display">10</span></label>
+              <input type="range" id="ks-cap" min="5" max="20" value="10">
+            </div>
+            <div class="control-row">
+              <label>Speed <span id="ks-speed-display">60</span></label>
+              <input type="range" id="ks-speed" min="1" max="100" value="60">
+            </div>
+            <div class="btn-group">
+              <button id="ks-generate" class="btn btn-full">🎲 New Items</button>
+              <button id="ks-start" class="btn btn-primary btn-full">▶ Solve</button>
+              <button id="ks-reset" class="btn btn-full">↺ Reset</button>
+            </div>
+          </div>
+          <div class="sidebar-section">
+            <h4>Items</h4>
+            <div id="ks-items-list" class="ks-items-list"></div>
+          </div>
+          <div class="sidebar-section">
+            <h4>Statistics</h4>
+            <div class="stats-grid">
+              <div class="stat-item"><span class="stat-value" id="ks-max-val">0</span><span class="stat-label">Max Value</span></div>
+              <div class="stat-item"><span class="stat-value" id="ks-weight">0</span><span class="stat-label">Weight Used</span></div>
+              <div class="stat-item"><span class="stat-value" id="ks-cells">0</span><span class="stat-label">Cells Filled</span></div>
+              <div class="stat-item"><span class="stat-value" id="ks-time">0</span><span class="stat-label">ms</span></div>
+            </div>
+          </div>
+        </aside>
+        <div class="prob-viz">
+          <div class="prob-toolbar">
+            <span class="algo-name">0/1 Knapsack DP Table</span>
+            <div class="ks-legend">
+              <span class="ks-leg current">Current Cell</span>
+              <span class="ks-leg selected">Selected Item</span>
+              <span class="ks-leg traceback">Traceback</span>
+            </div>
+            <div class="status-badge idle" id="ks-status"><div class="status-dot"></div><span id="ks-status-text">Idle</span></div>
+          </div>
+          <div class="prob-canvas-wrap" id="ks-wrap">
+            <div id="ks-table-wrap"><table id="ks-table"></table></div>
+          </div>
+          <div class="step-desc" id="ks-desc">Press ▶ Solve to fill the DP table</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════ COIN CHANGE -->
+    <div class="prob-panel" id="tab-coinchange">
+      <div class="prob-layout">
+        <aside class="prob-sidebar">
+          <div class="sidebar-section">
+            <h4>Coin Change</h4>
+            <div class="info-panel">
+              <div class="complexity-row"><span class="complexity-label">Paradigm</span><span class="complexity-value" style="color:var(--secondary)">Dynamic Programming</span></div>
+              <div class="complexity-row"><span class="complexity-label">Time</span><span class="complexity-value">O(N×Amount)</span></div>
+              <div class="complexity-row"><span class="complexity-label">Space</span><span class="complexity-value">O(Amount)</span></div>
+              <p class="algo-desc">Find the minimum number of coins to make a target amount. The DP array is filled left to right, each cell showing the fewest coins needed.</p>
+            </div>
+          </div>
+          <div class="sidebar-section">
+            <h4>Controls</h4>
+            <div class="control-row">
+              <label>Target Amount <span id="cc-amt-display">15</span></label>
+              <input type="range" id="cc-amt" min="5" max="30" value="15">
+            </div>
+            <div class="control-row">
+              <label>Speed <span id="cc-speed-display">60</span></label>
+              <input type="range" id="cc-speed" min="1" max="100" value="60">
+            </div>
+            <div class="sidebar-section" style="padding:0;border:none;background:none">
+              <h4 style="margin-bottom:0.5rem">Coin Denominations</h4>
+              <input type="text" id="cc-coins-input" class="custom-input" value="1, 3, 4, 5" placeholder="e.g. 1, 3, 4, 5">
+            </div>
+            <div class="btn-group" style="margin-top:0.75rem">
+              <button id="cc-start" class="btn btn-primary btn-full">▶ Solve</button>
+              <button id="cc-reset" class="btn btn-full">↺ Reset</button>
+            </div>
+          </div>
+          <div class="sidebar-section">
+            <h4>Statistics</h4>
+            <div class="stats-grid">
+              <div class="stat-item"><span class="stat-value" id="cc-min-coins">—</span><span class="stat-label">Min Coins</span></div>
+              <div class="stat-item"><span class="stat-value" id="cc-steps">0</span><span class="stat-label">Steps</span></div>
+              <div class="stat-item"><span class="stat-value" id="cc-time">0</span><span class="stat-label">ms</span></div>
+              <div class="stat-item"><span class="stat-value" id="cc-coins-used">—</span><span class="stat-label">Coins Used</span></div>
+            </div>
+          </div>
+        </aside>
+        <div class="prob-viz">
+          <div class="prob-toolbar">
+            <span class="algo-name">Coin Change DP Array</span>
+            <div class="status-badge idle" id="cc-status"><div class="status-dot"></div><span id="cc-status-text">Idle</span></div>
+          </div>
+          <div class="prob-canvas-wrap" id="cc-wrap">
+            <div id="cc-viz"></div>
+          </div>
+          <div class="step-desc" id="cc-desc">Press ▶ Solve to animate the DP array</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════ FIBONACCI DP -->
+    <div class="prob-panel" id="tab-fibonacci">
+      <div class="prob-layout">
+        <aside class="prob-sidebar">
+          <div class="sidebar-section">
+            <h4>Fibonacci — DP</h4>
+            <div class="info-panel">
+              <div class="complexity-row"><span class="complexity-label">Paradigm</span><span class="complexity-value" style="color:var(--secondary)">Dynamic Programming</span></div>
+              <div class="complexity-row"><span class="complexity-label">Time</span><span class="complexity-value">O(N)</span></div>
+              <div class="complexity-row"><span class="complexity-label">Space</span><span class="complexity-value">O(N)</span></div>
+              <p class="algo-desc">Computes Fibonacci numbers using memoization (top-down) and tabulation (bottom-up), showing how DP avoids redundant computation vs naive recursion.</p>
+            </div>
+          </div>
+          <div class="sidebar-section">
+            <h4>Controls</h4>
+            <div class="control-row">
+              <label>N <span id="fib-n-display">12</span></label>
+              <input type="range" id="fib-n" min="3" max="20" value="12">
+            </div>
+            <div class="control-row">
+              <label>Speed <span id="fib-speed-display">60</span></label>
+              <input type="range" id="fib-speed" min="1" max="100" value="60">
+            </div>
+            <div class="btn-group">
+              <button id="fib-start" class="btn btn-primary btn-full">▶ Compute</button>
+              <button id="fib-reset" class="btn btn-full">↺ Reset</button>
+            </div>
+          </div>
+          <div class="sidebar-section">
+            <h4>Statistics</h4>
+            <div class="stats-grid">
+              <div class="stat-item"><span class="stat-value" id="fib-result">—</span><span class="stat-label">F(N)</span></div>
+              <div class="stat-item"><span class="stat-value" id="fib-calls">0</span><span class="stat-label">DP Calls</span></div>
+              <div class="stat-item"><span class="stat-value" id="fib-naive">0</span><span class="stat-label">Naive Calls</span></div>
+              <div class="stat-item"><span class="stat-value" id="fib-time">0</span><span class="stat-label">ms</span></div>
+            </div>
+          </div>
+        </aside>
+        <div class="prob-viz">
+          <div class="prob-toolbar">
+            <span class="algo-name">Fibonacci — Tabulation (Bottom-Up DP)</span>
+            <div class="status-badge idle" id="fib-status"><div class="status-dot"></div><span id="fib-status-text">Idle</span></div>
+          </div>
+          <div class="prob-canvas-wrap" id="fib-wrap">
+            <div id="fib-viz"></div>
+          </div>
+          <div class="step-desc" id="fib-desc">Press ▶ Compute to animate the DP table</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════ ACTIVITY SELECTION -->
+    <div class="prob-panel" id="tab-activity">
+      <div class="prob-layout">
+        <aside class="prob-sidebar">
+          <div class="sidebar-section">
+            <h4>Activity Selection</h4>
+            <div class="info-panel">
+              <div class="complexity-row"><span class="complexity-label">Paradigm</span><span class="complexity-value" style="color:var(--secondary)">Greedy</span></div>
+              <div class="complexity-row"><span class="complexity-label">Time</span><span class="complexity-value">O(N log N)</span></div>
+              <div class="complexity-row"><span class="complexity-label">Space</span><span class="complexity-value">O(N)</span></div>
+              <p class="algo-desc">Select the maximum number of non-overlapping activities. Greedy choice: always pick the activity that finishes earliest and doesn't conflict.</p>
+            </div>
+          </div>
+          <div class="sidebar-section">
+            <h4>Controls</h4>
+            <div class="control-row">
+              <label>Activities <span id="act-n-display">8</span></label>
+              <input type="range" id="act-n" min="4" max="14" value="8">
+            </div>
+            <div class="control-row">
+              <label>Speed <span id="act-speed-display">60</span></label>
+              <input type="range" id="act-speed" min="1" max="100" value="60">
+            </div>
+            <div class="btn-group">
+              <button id="act-generate" class="btn btn-full">🎲 New Activities</button>
+              <button id="act-start" class="btn btn-primary btn-full">▶ Select</button>
+              <button id="act-reset" class="btn btn-full">↺ Reset</button>
+            </div>
+          </div>
+          <div class="sidebar-section">
+            <h4>Statistics</h4>
+            <div class="stats-grid">
+              <div class="stat-item"><span class="stat-value" id="act-selected">0</span><span class="stat-label">Selected</span></div>
+              <div class="stat-item"><span class="stat-value" id="act-rejected">0</span><span class="stat-label">Rejected</span></div>
+              <div class="stat-item"><span class="stat-value" id="act-total">0</span><span class="stat-label">Total</span></div>
+              <div class="stat-item"><span class="stat-value" id="act-time">0</span><span class="stat-label">ms</span></div>
+            </div>
+          </div>
+        </aside>
+        <div class="prob-viz">
+          <div class="prob-toolbar">
+            <span class="algo-name">Activity Selection — Greedy</span>
+            <div class="act-legend">
+              <span class="act-leg selected">Selected</span>
+              <span class="act-leg rejected">Rejected</span>
+              <span class="act-leg current">Considering</span>
+            </div>
+            <div class="status-badge idle" id="act-status"><div class="status-dot"></div><span id="act-status-text">Idle</span></div>
+          </div>
+          <div class="prob-canvas-wrap" id="act-wrap">
+            <div id="act-viz"></div>
+          </div>
+          <div class="step-desc" id="act-desc">Press ▶ Select to run the greedy algorithm</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="footer-container"></div>
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="assets/js/utils/helpers.js"></script>
+  <script src="assets/js/utils/constants.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/problems/problems.js"></script>
+</body>
+</html>

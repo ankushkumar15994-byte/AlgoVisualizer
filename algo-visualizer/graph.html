@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graph Algorithms — AlgoVisualizer</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/graph.css">
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <button class="sidebar-toggle" id="sidebarToggle">⚙ Controls &amp; Settings <span class="toggle-arrow">▼</span></button>
+  <div class="page-layout">
+    <aside class="sidebar" id="mainSidebar">
+
+      <div class="sidebar-section">
+        <h4>Algorithm</h4>
+        <div class="algo-list" id="algoList">
+          <button class="algo-btn active" data-algo="bfs">BFS</button>
+          <button class="algo-btn" data-algo="dfs">DFS</button>
+          <button class="algo-btn" data-algo="dijkstra">Dijkstra's</button>
+          <button class="algo-btn" data-algo="kruskal">Kruskal's MST</button>
+          <button class="algo-btn" data-algo="prim">Prim's MST</button>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h4>Controls</h4>
+        <div class="control-row">
+          <label>Nodes <span id="nodeDisplay">10</span></label>
+          <input type="range" id="nodeCount" min="5" max="20" value="10">
+        </div>
+        <div class="control-row">
+          <label>Speed <span id="speedDisplay">50</span></label>
+          <input type="range" id="speedControl" min="1" max="100" value="50">
+        </div>
+        <div class="btn-group">
+          <button id="generateGraphBtn" class="btn btn-full">🎲 New Graph</button>
+          <button id="selectStartBtn" class="btn btn-full">📍 Set Start Node</button>
+          <button id="selectEndBtn" class="btn btn-full">🏁 Set End Node</button>
+          <button id="startBtn" class="btn btn-primary btn-full">▶ Run Algorithm</button>
+          <div style="display:flex;gap:0.4rem">
+            <button id="pauseBtn" class="btn" style="flex:1" disabled>⏸ Pause</button>
+            <button id="resetBtn" class="btn" style="flex:1">↺ Reset</button>
+          </div>
+        </div>
+        <div id="selectHint" class="node-select-hint" style="display:none;margin-top:0.5rem">Click a node on the canvas</div>
+      </div>
+
+      <div class="sidebar-section">
+        <h4>Complexity</h4>
+        <div class="info-panel" id="algoInfo">
+          <div class="complexity-row"><span class="complexity-label">Time</span><span class="complexity-value">O(V+E)</span></div>
+          <div class="complexity-row"><span class="complexity-label">Space</span><span class="complexity-value">O(V)</span></div>
+          <p class="algo-desc">Explores vertices layer by layer, visiting all neighbors at current depth before going deeper.</p>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h4>Statistics</h4>
+        <div class="stats-grid">
+          <div class="stat-item"><span class="stat-value" id="nodesVisited">0</span><span class="stat-label">Visited</span></div>
+          <div class="stat-item"><span class="stat-value" id="pathLength">0</span><span class="stat-label">MST Edges</span></div>
+          <div class="stat-item"><span class="stat-value" id="time">0</span><span class="stat-label">ms</span></div>
+          <div class="stat-item"><span class="stat-value" id="totalNodes">10</span><span class="stat-label">Nodes</span></div>
+        </div>
+      </div>
+
+      <div class="sidebar-section complexity-result" id="complexityResult" style="display:none">
+        <h4>📊 Run Analysis</h4>
+        <div class="cx-grid" id="cxGrid"></div>
+      </div>
+
+    </aside>
+
+    <div class="viz-area">
+      <div class="viz-toolbar">
+        <span class="algo-name" id="currentAlgoName">BFS</span>
+        <div class="graph-legend">
+          <div class="legend-item"><div class="legend-circle start"></div>Start</div>
+          <div class="legend-item"><div class="legend-circle end"></div>End</div>
+          <div class="legend-item"><div class="legend-circle unvisited"></div>Unvisited</div>
+          <div class="legend-item"><div class="legend-circle visiting"></div>Visiting</div>
+          <div class="legend-item"><div class="legend-circle visited"></div>Visited</div>
+          <div class="legend-item"><div class="legend-circle path"></div>Path / MST</div>
+        </div>
+        <div class="status-badge idle" id="statusBadge">
+          <div class="status-dot"></div>
+          <span id="statusText">Idle</span>
+        </div>
+      </div>
+      <div class="viz-canvas-wrap">
+        <canvas id="graphCanvas"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-container"></div>
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="assets/js/utils/helpers.js"></script>
+  <script src="assets/js/utils/constants.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/utils/complexityAnalyzer.js"></script>
+  <script src="assets/js/graph/bfs.js"></script>
+  <script src="assets/js/graph/dfs.js"></script>
+  <script src="assets/js/graph/dijkstra.js"></script>
+  <script src="assets/js/graph/kruskal.js"></script>
+  <script src="assets/js/graph/prim.js"></script>
+  <script src="assets/js/graph/graphViz.js"></script>
+</body>
+</html>

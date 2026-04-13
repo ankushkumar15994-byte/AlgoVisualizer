@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorting Algorithms — AlgoVisualizer</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/sorting.css">
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <button class="sidebar-toggle" id="sidebarToggle">⚙ Controls &amp; Settings <span class="toggle-arrow">▼</span></button>
+  <div class="page-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="mainSidebar">
+
+      <div class="sidebar-section">
+        <h4>Algorithm</h4>
+        <div class="algo-list" id="algoList">
+          <button class="algo-btn active" data-algo="bubble">Bubble Sort</button>
+          <button class="algo-btn" data-algo="selection">Selection Sort</button>
+          <button class="algo-btn" data-algo="merge">Merge Sort</button>
+          <button class="algo-btn" data-algo="quick">Quick Sort</button>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h4>Custom Input</h4>
+        <div class="custom-input-wrap">
+          <input
+            type="text"
+            id="customInput"
+            class="custom-input"
+            placeholder="e.g. 5, 3, 8, 1, 9, 2"
+            maxlength="60"
+          />
+          <div class="custom-input-hint">Enter numbers separated by commas (max 20)</div>
+          <button id="applyInputBtn" class="btn btn-success btn-full">✓ Use My Array</button>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h4>Controls</h4>
+        <div class="control-row">
+          <label>Random Size <span id="sizeDisplay">10</span></label>
+          <input type="range" id="arraySize" min="4" max="20" value="10">
+        </div>
+        <div class="control-row">
+          <label>Speed <span id="speedDisplay">50</span></label>
+          <input type="range" id="speedControl" min="1" max="100" value="50">
+        </div>
+        <div class="btn-group">
+          <button id="generateBtn" class="btn btn-full">🎲 Random Array</button>
+          <button id="startBtn" class="btn btn-primary btn-full">▶ Start Sort</button>
+          <div style="display:flex;gap:0.4rem">
+            <button id="pauseBtn" class="btn" style="flex:1" disabled>⏸ Pause</button>
+            <button id="resetBtn" class="btn" style="flex:1">↺ Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h4>Complexity</h4>
+        <div class="info-panel" id="algoInfo">
+          <div class="complexity-row"><span class="complexity-label">Time</span><span class="complexity-value">O(n²)</span></div>
+          <div class="complexity-row"><span class="complexity-label">Space</span><span class="complexity-value">O(1)</span></div>
+          <p class="algo-desc">Repeatedly steps through the list, compares adjacent elements and swaps them if out of order.</p>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h4>Statistics</h4>
+        <div class="stats-grid">
+          <div class="stat-item"><span class="stat-value" id="comparisons">0</span><span class="stat-label">Comparisons</span></div>
+          <div class="stat-item"><span class="stat-value" id="swaps">0</span><span class="stat-label">Swaps</span></div>
+          <div class="stat-item"><span class="stat-value" id="time">0</span><span class="stat-label">ms</span></div>
+          <div class="stat-item"><span class="stat-value" id="arrayLen">30</span><span class="stat-label">Elements</span></div>
+        </div>
+      </div>
+
+      <div class="sidebar-section complexity-result" id="complexityResult" style="display:none">
+        <h4>📊 Run Analysis</h4>
+        <div class="cx-grid" id="cxGrid"></div>
+      </div>
+
+    </aside>
+
+    <!-- Visualization -->
+    <div class="viz-area">
+      <div class="viz-toolbar">
+        <span class="algo-name" id="currentAlgoName">Bubble Sort</span>
+        <div class="sort-legend">
+          <div class="legend-item"><div class="legend-dot default"></div>Default</div>
+          <div class="legend-item"><div class="legend-dot comparing"></div>Comparing</div>
+          <div class="legend-item"><div class="legend-dot swapping"></div>Swapping</div>
+          <div class="legend-item"><div class="legend-dot sorted"></div>Sorted</div>
+          <div class="legend-item"><div class="legend-dot pivot"></div>Pivot</div>
+        </div>
+        <div class="status-badge idle" id="statusBadge">
+          <div class="status-dot"></div>
+          <span id="statusText">Idle</span>
+        </div>
+      </div>
+      <div class="viz-canvas-wrap">
+        <div class="sort-viz-wrap" id="sortingCanvas">
+          <div class="array-label-row">
+            <span class="array-label">arr =</span>
+            <div class="array-cells" id="arrayCells"></div>
+          </div>
+          <div class="step-desc" id="stepDesc">Press <strong>▶ Start Sort</strong> to begin</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-container"></div>
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="assets/js/utils/helpers.js"></script>
+  <script src="assets/js/utils/constants.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/utils/complexityAnalyzer.js"></script>
+  <script src="assets/js/sorting/bubble.js"></script>
+  <script src="assets/js/sorting/selection.js"></script>
+  <script src="assets/js/sorting/merge.js"></script>
+  <script src="assets/js/sorting/quick.js"></script>
+  <script src="assets/js/sorting/sortingViz.js"></script>
+</body>
+</html>

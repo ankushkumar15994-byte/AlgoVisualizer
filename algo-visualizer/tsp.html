@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traveling Salesman — AlgoVisualizer</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/tsp.css">
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <button class="sidebar-toggle" id="sidebarToggle">⚙ Controls &amp; Settings <span class="toggle-arrow">▼</span></button>
+  <div class="page-layout">
+    <aside class="sidebar" id="mainSidebar">
+
+      <div class="sidebar-section">
+        <h4>Algorithm</h4>
+        <div class="algo-list" id="algoList">
+          <button class="algo-btn active" data-algo="greedy">Greedy (Nearest)</button>
+          <button class="algo-btn" data-algo="bruteforce">Brute Force</button>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h4>Controls</h4>
+        <div class="control-row">
+          <label>Cities <span id="cityDisplay">8</span></label>
+          <input type="range" id="cityCount" min="4" max="12" value="8">
+        </div>
+        <div class="control-row">
+          <label>Speed <span id="speedDisplay">50</span></label>
+          <input type="range" id="speedControl" min="1" max="100" value="50">
+        </div>
+        <div class="btn-group">
+          <button id="generateBtn" class="btn btn-full">🎲 Generate Cities</button>
+          <button id="startBtn" class="btn btn-primary btn-full">▶ Solve TSP</button>
+          <div style="display:flex;gap:0.4rem">
+            <button id="pauseBtn" class="btn" style="flex:1" disabled>⏸ Pause</button>
+            <button id="resetBtn" class="btn" style="flex:1">↺ Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h4>Complexity</h4>
+        <div class="info-panel" id="algoInfo">
+          <div class="complexity-row"><span class="complexity-label">Time</span><span class="complexity-value">O(n²)</span></div>
+          <div class="complexity-row"><span class="complexity-label">Space</span><span class="complexity-value">O(n)</span></div>
+          <p class="algo-desc">Always travels to the nearest unvisited city. Fast but not always optimal.</p>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h4>Statistics</h4>
+        <div class="stats-grid">
+          <div class="stat-item"><span class="stat-value" id="bestDistance">0</span><span class="stat-label">Best Dist</span></div>
+          <div class="stat-item"><span class="stat-value" id="routesChecked">0</span><span class="stat-label">Routes</span></div>
+          <div class="stat-item"><span class="stat-value" id="time">0</span><span class="stat-label">ms</span></div>
+          <div class="stat-item"><span class="stat-value" id="cityCount2">8</span><span class="stat-label">Cities</span></div>
+        </div>
+      </div>
+
+      <div class="sidebar-section complexity-result" id="complexityResult" style="display:none">
+        <h4>📊 Run Analysis</h4>
+        <div class="cx-grid" id="cxGrid"></div>
+      </div>
+
+    </aside>
+
+    <div class="viz-area">
+      <div class="viz-toolbar">
+        <span class="algo-name" id="currentAlgoName">Greedy TSP</span>
+        <div class="tsp-legend">
+          <div class="legend-item"><div class="legend-line current"></div>Current Route</div>
+          <div class="legend-item"><div class="legend-line best"></div>Best Route</div>
+          <div class="legend-item"><div class="legend-line edge"></div>All Edges</div>
+        </div>
+        <div class="status-badge idle" id="statusBadge">
+          <div class="status-dot"></div>
+          <span id="statusText">Idle</span>
+        </div>
+      </div>
+      <div class="viz-canvas-wrap">
+        <canvas id="tspCanvas"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-container"></div>
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="assets/js/utils/helpers.js"></script>
+  <script src="assets/js/utils/constants.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/utils/complexityAnalyzer.js"></script>
+  <script src="assets/js/tsp/tsp.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/tsp/tspViz.js"></script>
+</body>
+</html>
